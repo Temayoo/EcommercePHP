@@ -1,6 +1,6 @@
 -- Création de la table User
 CREATE TABLE User (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL,
     mdp VARCHAR(255) NOT NULL,
     pseudo VARCHAR(255) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE User (
 
 -- Création de la table Produit
 CREATE TABLE Produit (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     stock INT,
     prix FLOAT,
     genre VARCHAR(255),
@@ -25,7 +25,7 @@ CREATE TABLE Produit (
 
 -- Création de la table Commande
 CREATE TABLE Commande (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     id_user INT,
     id_produit INT,
     date_commande DATE,
