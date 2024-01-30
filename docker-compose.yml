@@ -45,3 +45,16 @@ services:
             MARIADB_PASSWORD: "${MARIADB_PASSWORD}"
         ports:
             - "3306:3306"
+    
+    adminer:
+        image: adminer:4.8.1
+        restart: always
+        links:
+            - mariadb
+        depends_on:
+            - mariadb
+        environment:
+            ADMINER_DEFAULT_SERVER: mariadb
+            ADMINER_PLUGINS: "tables-filter tinymce"
+        ports:
+            - "8086:8080"

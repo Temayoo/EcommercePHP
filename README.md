@@ -1,2 +1,9 @@
-# EcommercePHP
-Création d'un site E commerce en PHP
+## Acces Site
+
+http://localhost:8088
+
+## Acces DB
+
+http://localhost:8086
+
+
