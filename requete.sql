@@ -44,3 +44,11 @@ CREATE TABLE ProduitCommande (
     FOREIGN KEY (id_commande) REFERENCES Commande(id)
 );
 
+
+-- Insertion des produits
+INSERT INTO Produit (stock, prix, genre, nom, commentaire, notations) VALUES
+(10, 1009.99, 'Électronique', 'Télephone', 'Un excellent Télephone avec de nombreuses fonctionnalités.', 4.5),
+(20, 49.99, 'Vêtements', 'Chemise ', 'Chemise pour occasions spéciales.', 4.2),
+(15, 99.99, 'Électroménager', 'Cafetière automatique', 'Préparez votre café préféré.', 4.0),
+(5, 199.99, 'Informatique', 'Ordinateur portable', 'Puissant et portable pour répondre à tous vos besoins.', 4.8),
+(30, 14.99, 'Livres', 'Roman captivant', 'Un passionnant roman.', 4.6);
