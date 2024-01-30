@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../src/init.php';
+require_once __DIR__ . '/../../src/init.php';
 // $pdo est dispo !
 
 if (empty($_POST['email'])) {
@@ -31,10 +31,10 @@ if (strlen($_POST['password']) < 6) {
 $password = hash('sha256', $_POST['password']);
 
 // verifier que l'email n'est pas deja en DB
-$st1 = $pdo->prepare('SELECT * FROM users WHERE email = ? OR username = ?');
+$st1 = $pdo->prepare('SELECT * FROM User WHERE email = ? OR pseudo = ?');
 $st1->execute([$_POST['email'], $_POST['username']]);
 $alreadyExists = $st1->fetch(PDO::FETCH_ASSOC);
-// $alreadyExists = [ 'username' => 'edouard', .... ];
+// $alreadyExists = [ 'pseudo' => 'edouard', .... ];
 if ($alreadyExists != false) {
     $_SESSION['error_message'] = 'Déjà inscrit.';
     header('Location: /register.php'); // redirige utilisateur
@@ -42,7 +42,7 @@ if ($alreadyExists != false) {
 }
 
 // INSERT
-$st2 = $pdo->prepare('INSERT INTO users(email, password, username) VALUES(?, ?, ?)');
+$st2 = $pdo->prepare('INSERT INTO User(email, mdp, pseudo) VALUES(?, ?, ?)');
 $st2->execute([$_POST['email'], $password, $_POST['username']]);
 
 // recup id utilisateur
