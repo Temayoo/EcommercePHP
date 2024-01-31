@@ -62,7 +62,8 @@ if (!empty($selectedGenre)) {
                 <th>Nom</th>
                 <?php if ($user["admin"]) : ?>
                     <th>Stock</th>
-                    <th>Supprimé</th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
                 <?php endif ?>
             </tr>
             <?php foreach ($products as $product) : ?>
@@ -73,7 +74,8 @@ if (!empty($selectedGenre)) {
                     <td><a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
                     <?php if ($user["admin"]) : ?>
                         <td><?= $product['stock'] ?></td>
-                        <td><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Suprimé l'article</a></td>
+                        <td><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Supprimer l'article</a></td>
+                        <td><a href="modifieArticle.php?id=<?= $id ?>">Modifier l'article</a></td>
                     <?php endif ?>
                 </tr>
             <?php endforeach; ?>
