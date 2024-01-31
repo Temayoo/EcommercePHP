@@ -18,7 +18,11 @@ require_once __DIR__ . '/../src/init.php';
             <div class="col">
                 <h1>Bonjour</h1>
                 <div class="alert alert-success">
-                    Bienvenue sur la boutique !
+                Bienvenue sur la boutique !
+
+                <?php if(isset($_SESSION['user_id'])) : ?>
+                    <a href="/product.php" class="btn btn-primary">Aller à la boutique</a>
+                <?php endif; ?>
                 </div>
             </div>
         </div>
