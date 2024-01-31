@@ -9,7 +9,7 @@ function initDB() {
     $db_pass = 'root';
 
     // data source name
-    $dsn = 'mysql:host=' . $db_host . ';dbname=' . $db_name . ';port=' . $db_port . '';
+    $dsn = 'mysql:host=' . $db_host . ';dbname=' . $db_name . ';port=' . $db_port . ';charset=utf8mb4';
 
 
     try {
