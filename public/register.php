@@ -30,6 +30,13 @@ require_once __DIR__ . '/../src/init.php';
             <input type="username" name="username" id="username">
         </div>
         <div>
+            <label for="role">Rôle :</label>
+        <select name="role" id="role">
+            <option value="user">Utilisateur</option>
+            <option value="admin">Admin</option>
+        </select>
+        </div>
+        <div>
             <button type="submit">Register NOW!</button>
         </div>
     </form>

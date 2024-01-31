@@ -41,9 +41,22 @@ if ($alreadyExists != false) {
     die(); // stop execution du script
 }
 
-// INSERT
-$st2 = $pdo->prepare('INSERT INTO User(email, mdp, pseudo) VALUES(?, ?, ?)');
-$st2->execute([$_POST['email'], $password, $_POST['username']]);
+if (isset($_POST['role'])) {
+    $role = $_POST['role']; 
+} else {
+    $role = 'user'; 
+}
+
+if ($role === 'admin') {
+    $admin = 1; 
+} else {
+    $admin = 0; 
+}
+
+$sql = 'INSERT INTO User(email, mdp, pseudo, admin) VALUES (?, ?, ?, ?)';
+$st2 = $pdo->prepare($sql);
+$st2->execute([$_POST['email'], $password, $_POST['username'], $admin]);
+
 
 // recup id utilisateur
 $_SESSION['user_id'] = $pdo->lastInsertId(); // connecté pour plus tard
