@@ -36,23 +36,16 @@ if (!empty($searchTerm)) {
 
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Stock</th>
                 <th>Prix</th>
                 <th>Genre</th>
                 <th>Nom</th>
-                <th>Commentaire</th>
-                <th>Notations</th>
             </tr>
             <?php foreach ($products as $product) : ?>
+                <?$id = $product["id"]?>
                 <tr>
-                    <td><?= $product['id'] ?></td>
-                    <td><?= $product['stock'] ?></td>
                     <td><?= $product['prix'] ?></td>
                     <td><?= $product['genre'] ?></td>
-                    <td><?= $product['nom'] ?></td>
-                    <td><?= $product['commentaire'] ?></td>
-                    <td><?= $product['notations'] ?></td>
+                    <td><a href="produit_choisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
