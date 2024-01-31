@@ -7,7 +7,12 @@ if (!empty($_GET["id"])) {
         $_GET['id']
     ]);
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
+    $stmt = $pdo->prepare('SELECT * FROM commentaire WHERE id_produit = ?');
+    $stmt->execute([
+        $_GET['id']
+    ]);
+    $commentaires = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
@@ -18,15 +23,16 @@ if (!empty($_GET["id"])) {
     <title>Document</title>
 </head>
 <body>
-    <h1>BONJOURS</h1>
+<?php foreach ($products as $product) : ?>
+        <?= $product["nom"] ?>
+    <?php endforeach; ?>
     <table border="1">
     <tr>
         <th>Stock</th>
         <th>Prix</th>
         <th>Genre</th>
         <th>Nom</th>
-        <th>Commantaire</th>
-        <th>Notation</th>
+        <th>Description</th>
     </tr>
     <?php foreach ($products as $product) : ?>
         <tr>
@@ -35,7 +41,19 @@ if (!empty($_GET["id"])) {
             <td><?= $product['genre'] ?></td>
             <td><?= $product['nom'] ?></td>
             <td><?= $product['commentaire'] ?></td>
-            <td><?= $product['notations'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+
+    <p></p>
+
+    <tr>
+        <th colspan="4">Commentaire</th>
+        <th>Notation</th>
+    </tr>
+    <?php foreach ($commentaires as $commentaire) : ?>
+        <tr>
+            <td colspan="4"><?= $commentaire["commentaire"]?></td>
+            <td><?= $commentaire["notations"]?></td>
         </tr>
     <?php endforeach; ?>
     <a href="/product.php" class="btn btn-primary">Retour a la boutique</a>

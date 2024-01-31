@@ -54,19 +54,28 @@ require_once __DIR__ . '/../src/partials/menu.php';
 
             <button type="submit">Rechercher</button>
         </form>
+        
 
         <table border="1">
             <tr>
                 <th>Prix</th>
                 <th>Genre</th>
                 <th>Nom</th>
+                <?php if ($user["admin"]) : ?>
+                    <th>Stock</th>
+                    <th>Supprimé</th>
+                <?php endif ?>
             </tr>
             <?php foreach ($products as $product) : ?>
                 <?$id = $product["id"]?>
                 <tr>
                     <td><?= $product['prix'] ?></td>
                     <td><?= $product['genre'] ?></td>
-                    <td><a href="produit_choisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
+                    <td><a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
+                    <?php if ($user["admin"]) : ?>
+                        <td><?= $product['stock'] ?></td>
+                        <td><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Suprimé l'article</a></td>
+                    <?php endif ?>
                 </tr>
             <?php endforeach; ?>
         </table>

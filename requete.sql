@@ -19,7 +19,6 @@ CREATE TABLE Produit (
     genre VARCHAR(255),
     nom VARCHAR(255),
     commentaire TEXT,
-    notations FLOAT
 )engine=InnoDB CHARSET=utf8mb4;
 
 
@@ -30,6 +29,17 @@ CREATE TABLE Commande (
     id_produit INT,
     date_commande DATE,
     description TEXT,
+    FOREIGN KEY (id_user) REFERENCES User(id),
+    FOREIGN KEY (id_produit) REFERENCES Produit(id)
+)engine=InnoDB CHARSET=utf8mb4;
+
+-- Création de la table Commentaire
+CREATE TABLE commentaire (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_user int,
+    id_produit int
+    commentaire TEXT,
+    notations FLOAT,
     FOREIGN KEY (id_user) REFERENCES User(id),
     FOREIGN KEY (id_produit) REFERENCES Produit(id)
 )engine=InnoDB CHARSET=utf8mb4;
@@ -46,10 +56,15 @@ CREATE TABLE ProduitCommande (
 
 
 -- Insertion des produits
-INSERT INTO Produit (stock, prix, genre, nom, commentaire, notations) VALUES
-(10, 1009.99, 'Électronique', 'Télephone', 'Un excellent Télephone avec de nombreuses fonctionnalités.', 4.5),
-(20, 49.99, 'Vêtements', 'Chemise ', 'Chemise pour occasions spéciales.', 4.2),
-(15, 99.99, 'Électroménager', 'Cafetière automatique', 'Préparez votre café préféré.', 4.0),
-(5, 199.99, 'Informatique', 'Ordinateur portable', 'Puissant et portable pour répondre à tous vos besoins.', 4.8),
-(30, 14.99, 'Livres', 'Roman captivant', 'Un passionnant roman.', 4.6),
-(30, 14.99, 'Livres', 'Pomme le livre ', 'Un passionnant roman.', 4.6);
+INSERT INTO Produit (stock, prix, genre, nom, commentaire) VALUES
+(10, 1009.99, 'Électronique', 'Télephone', 'Un excellent Télephone avec de nombreuses fonctionnalités.'),
+(20, 49.99, 'Vêtements', 'Chemise ', 'Chemise pour occasions spéciales.'),
+(15, 99.99, 'Électroménager', 'Cafetière automatique', 'Préparez votre café préféré.'),
+(5, 199.99, 'Informatique', 'Ordinateur portable', 'Puissant et portable pour répondre à tous vos besoins.'),
+(30, 14.99, 'Livres', 'Roman captivant', 'Un passionnant roman.'),
+(30, 14.99, 'Livres', 'Pomme le livre ', 'Un passionnant roman.');
+
+-- Insertion des commentaire
+INSERT INTO commentaire (id_user, id_produit, commentaire, notations) VALUES
+(2, 2, "Sous vétement de merde", 0.0),
+(1, 2, "Franchement, pas mal", 6.0);
