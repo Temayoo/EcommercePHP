@@ -45,6 +45,18 @@ CREATE TABLE ProduitCommande (
 )engine=InnoDB CHARSET=utf8mb4;
 
 
+-- Création de la table Localisation
+CREATE TABLE Localisation (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_user INT,
+    adresse VARCHAR(255),
+    code_postal VARCHAR(10),
+    ville VARCHAR(255),
+    pays VARCHAR(255),
+    FOREIGN KEY (id_user) REFERENCES User(id)
+) ENGINE=InnoDB CHARSET=utf8mb4;
+
+
 -- Insertion des produits
 INSERT INTO Produit (stock, prix, genre, nom, commentaire, notations) VALUES
 (10, 1009.99, 'Électronique', 'Télephone', 'Un excellent Télephone avec de nombreuses fonctionnalités.', 4.5),

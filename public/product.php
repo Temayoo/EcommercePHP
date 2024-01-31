@@ -31,9 +31,8 @@ if (!empty($selectedGenre)) {
 </head>
 <body>
 
-<?php
-require_once __DIR__ . '/../src/partials/menu.php';
-?>
+
+    <?php require_once __DIR__ . '/../src/partials/menu.php';?>
 
     <div class="container">
         <h1>Liste des Produits</h1>
@@ -73,5 +72,10 @@ require_once __DIR__ . '/../src/partials/menu.php';
     </div>
 
     <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
+
+    <?php require_once __DIR__ . '/../src/partials/show_error.php'; ?>
+    <?php require_once __DIR__ . '/../src/partials/show_success.php'; ?>
+
+    
 </body>
 </html>
