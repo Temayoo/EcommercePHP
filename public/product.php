@@ -72,5 +72,6 @@ require_once __DIR__ . '/../src/partials/menu.php';
         </table>
     </div>
 
+    <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
 </body>
 </html>
