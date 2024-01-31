@@ -19,7 +19,7 @@ if (!empty($_GET["id"])) {
 </head>
 <body>
     <h1>BONJOURS</h1>
-    <table>
+    <table border="1">
     <tr>
         <th>Stock</th>
         <th>Prix</th>
