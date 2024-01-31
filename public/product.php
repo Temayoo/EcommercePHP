@@ -82,9 +82,75 @@ if (!empty($selectedGenre)) {
 
     <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
 
+
+
+
+    <?php if ($user["admin"]) : ?>
+<form action="/actions/addProduct.php" method="post" class="add-product-form">
+    <fieldset>
+        <legend>Ajouter un Produit</legend>
+
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br>
+
+        <label for="genre">Genre :</label>
+        <input type="text" id="genre" name="genre" required><br>
+
+        <label for="prix">Prix :</label>
+        <input type="number" step="0.01" id="prix" name="prix" required><br>
+
+        <label for="stock">Stock :</label>
+        <input type="number" id="stock" name="stock" required><br>
+
+        <label for="commentaire">Commentaire :</label>
+        <textarea id="commentaire" name="commentaire"></textarea><br>
+
+        <button type="submit">Ajouter le Produit</button>
+    </fieldset>
+</form>
+
+    <?php endif ?>
+
     <?php require_once __DIR__ . '/../src/partials/show_error.php'; ?>
     <?php require_once __DIR__ . '/../src/partials/show_success.php'; ?>
 
     
 </body>
+
+<style>
+    .add-product-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .add-product-form fieldset {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .add-product-form label {
+        display: inline-block;
+        width: 100px;
+        margin-bottom: 5px;
+    }
+
+    .add-product-form input,
+    .add-product-form textarea {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    .add-product-form button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+
 </html>
