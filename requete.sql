@@ -76,6 +76,16 @@ INSERT INTO Produit (stock, prix, genre, nom, commentaire) VALUES
 (30, 14.99, 'Livres', 'Roman captivant', 'Un passionnant roman.'),
 (30, 14.99, 'Livres', 'Pomme le livre ', 'Un passionnant roman.');
 
+
+-- Insertion de l'utilisateur "user"
+INSERT INTO User (email, mdp, pseudo) VALUES
+('user@gmail.com', 'e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf', 'user');
+
+-- Insertion de l'utilisateur "admin"
+INSERT INTO User (email, mdp, pseudo, admin) VALUES
+('admin@gmail.com', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892', 'admin', TRUE);
+
+
 -- Insertion des commentaire
 INSERT INTO commentaire (id_user, id_produit, commentaire, notations) VALUES
 (2, 2, "Sous vétement de merde", 0.0),
