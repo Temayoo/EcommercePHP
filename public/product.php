@@ -57,6 +57,7 @@ if (!empty($selectedGenre)) {
 
         <table border="1">
             <tr>
+                <th>Image</th>
                 <th>Prix</th>
                 <th>Genre</th>
                 <th>Nom</th>
@@ -69,6 +70,7 @@ if (!empty($selectedGenre)) {
             <?php foreach ($products as $product) : ?>
                 <?$id = $product["id"]?>
                 <tr>
+                    <td><img src="<?= $product['image_url'] ?>" alt="<?= $product['nom'] ?>" width="100"></td>
                     <td><?= $product['prix'] ?></td>
                     <td><?= $product['genre'] ?></td>
                     <td><a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
@@ -106,6 +108,9 @@ if (!empty($selectedGenre)) {
 
         <label for="commentaire">Commentaire :</label>
         <textarea id="commentaire" name="commentaire"></textarea><br>
+
+        <label for="image_url">URL de l'image :</label>
+        <input type="text" id="image_url" name="image_url" required><br>
 
         <button type="submit">Ajouter le Produit</button>
     </fieldset>
