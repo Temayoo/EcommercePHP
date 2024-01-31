@@ -18,7 +18,8 @@ CREATE TABLE Produit (
     prix FLOAT,
     genre VARCHAR(255),
     nom VARCHAR(255),
-    commentaire TEXT
+    commentaire TEXT,
+    image_url VARCHAR(255)
 )engine=InnoDB CHARSET=utf8mb4;
 
 
