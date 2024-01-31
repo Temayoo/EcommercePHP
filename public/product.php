@@ -56,31 +56,32 @@ if (!empty($selectedGenre)) {
         
 
         <table border="1">
-    <tr>
-        <th>Image</th>
-        <th>Prix</th>
-        <th>Genre</th>
-        <th>Nom</th>
-        <?php if ($user["admin"]) : ?>
-            <th>Stock</th>
-            <th>Supprimé</th>
-        <?php endif ?>
-    </tr>
-    <?php foreach ($products as $product) : ?>
-        <?php $id = $product["id"] ?>
-        <tr>
-            <td><img src="<?= $product['image_url'] ?>" alt="<?= $product['nom'] ?>" width="100"></td>
-            <td><?= $product['prix'] ?></td>
-            <td><?= $product['genre'] ?></td>
-            <td><a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
-            <?php if ($user["admin"]) : ?>
-                <td><?= $product['stock'] ?></td>
-                <td><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Supprimer l'article</a></td>
-            <?php endif ?>
-        </tr>
-        <?php endforeach; ?>
-            </table>
-
+            <tr>
+                <th>Image</th>
+                <th>Prix</th>
+                <th>Genre</th>
+                <th>Nom</th>
+                <?php if ($user["admin"]) : ?>
+                    <th>Stock</th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
+                <?php endif ?>
+            </tr>
+            <?php foreach ($products as $product) : ?>
+                <?$id = $product["id"]?>
+                <tr>
+                    <td><img src="<?= $product['image_url'] ?>" alt="<?= $product['nom'] ?>" width="100"></td>
+                    <td><?= $product['prix'] ?></td>
+                    <td><?= $product['genre'] ?></td>
+                    <td><a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
+                    <?php if ($user["admin"]) : ?>
+                        <td><?= $product['stock'] ?></td>
+                        <td><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Supprimer l'article</a></td>
+                        <td><a href="modifieArticle.php?id=<?= $id ?>">Modifier l'article</a></td>
+                    <?php endif ?>
+                </tr>
+            <?php endforeach; ?>
+        </table>
     </div>
 
     <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
