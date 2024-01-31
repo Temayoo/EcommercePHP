@@ -12,6 +12,7 @@ require_once __DIR__ . '/../src/init.php';
 <body>
     <?php require_once __DIR__ . '/../src/partials/menu.php'; ?>
     <?php require_once __DIR__ . '/../src/partials/show_error.php'; ?>
+    <?php require_once __DIR__ . '/../src/partials/show_success.php'; ?>
 
     <div class="container">
         <div class="row">
