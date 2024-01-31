@@ -62,10 +62,11 @@ require_once __DIR__ . '/../src/partials/menu.php';
                 <th>Nom</th>
             </tr>
             <?php foreach ($products as $product) : ?>
+                <?$id = $product["id"]?>
                 <tr>
                     <td><?= $product['prix'] ?></td>
                     <td><?= $product['genre'] ?></td>
-                    <td><?= $product['nom'] ?></td>
+                    <td><a href="produit_choisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
