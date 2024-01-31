@@ -18,7 +18,7 @@ CREATE TABLE Produit (
     prix FLOAT,
     genre VARCHAR(255),
     nom VARCHAR(255),
-    commentaire TEXT,
+    commentaire TEXT
 )engine=InnoDB CHARSET=utf8mb4;
 
 
@@ -37,7 +37,7 @@ CREATE TABLE Commande (
 CREATE TABLE commentaire (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_user int,
-    id_produit int
+    id_produit int,
     commentaire TEXT,
     notations FLOAT,
     FOREIGN KEY (id_user) REFERENCES User(id),
@@ -64,7 +64,7 @@ CREATE TABLE Localisation (
     ville VARCHAR(255),
     pays VARCHAR(255),
     FOREIGN KEY (id_user) REFERENCES User(id)
-) ENGINE=InnoDB CHARSET=utf8mb4;
+)engine=InnoDB CHARSET=utf8mb4;
 
 
 -- Insertion des produits
