@@ -7,7 +7,7 @@ CREATE TABLE User (
     admin BOOLEAN DEFAULT FALSE,
     creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     action TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+)engine=InnoDB CHARSET=utf8mb4;
 
 
 
@@ -20,7 +20,7 @@ CREATE TABLE Produit (
     nom VARCHAR(255),
     commentaire TEXT,
     notations FLOAT
-);
+)engine=InnoDB CHARSET=utf8mb4;
 
 
 -- Création de la table Commande
@@ -32,7 +32,7 @@ CREATE TABLE Commande (
     description TEXT,
     FOREIGN KEY (id_user) REFERENCES User(id),
     FOREIGN KEY (id_produit) REFERENCES Produit(id)
-);
+)engine=InnoDB CHARSET=utf8mb4;
 
 
 -- Création de la table de liaison ProduitCommande
@@ -42,7 +42,7 @@ CREATE TABLE ProduitCommande (
     quantite INT,
     FOREIGN KEY (id_produit) REFERENCES Produit(id),
     FOREIGN KEY (id_commande) REFERENCES Commande(id)
-);
+)engine=InnoDB CHARSET=utf8mb4;
 
 
 -- Insertion des produits
