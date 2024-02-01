@@ -26,13 +26,16 @@ if (!empty($_GET["id"])) {
 <?php foreach ($products as $product) : ?>
         <?= $product["nom"] ?>
     <?php endforeach; ?>
-    <table border="1">
+    <div>
+    <table border="1" >
     <tr>
         <th>Stock</th>
         <th>Prix</th>
         <th>Genre</th>
         <th>Nom</th>
         <th>Description</th>
+        <th>Ajouter au Panier</th>
+
     </tr>
     <?php foreach ($products as $product) : ?>
         <tr>
@@ -41,11 +44,15 @@ if (!empty($_GET["id"])) {
             <td><?= $product['genre'] ?></td>
             <td><?= $product['nom'] ?></td>
             <td><?= $product['commentaire'] ?></td>
+            <td><a href="action/ajoutArctivle.php?id=<?= $id ?>">Achter</a></td>
+
         </tr>
     <?php endforeach; ?>
 
     <p></p>
-
+    <?php
+        //si commande enregistrer >= 1 alors on affiche les commentaire et la notation,
+        // + ajout d un bouton ou d un lien vers un petit formulaire pour add un commentaire + notation ?>
     <tr>
         <th colspan="4">Commentaire</th>
         <th>Notation</th>
@@ -58,6 +65,7 @@ if (!empty($_GET["id"])) {
     <?php endforeach; ?>
     <a href="/product.php" class="btn btn-primary">Retour a la boutique</a>
     </table>
+    </div>
    
 </body>
 </html>
