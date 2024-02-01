@@ -30,6 +30,7 @@ if (!empty($_GET["id"])) {
         <p><strong>Prix:</strong> <?= $product['prix'] ?></p>
         <p><strong>Genre:</strong> <?= $product['genre'] ?></p>
         <p><strong>Description:</strong> <?= $product['commentaire'] ?></p>
+        <p><a href="actions/ajoutProduit.php?id=<?= $id ?>">Rajouter au panier</a></p>
     <?php endforeach; ?>
 
     <h3>Commentaires</h3>

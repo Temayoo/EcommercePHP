@@ -65,6 +65,7 @@ if (!empty($selectedGenre)) {
                     <p><strong>Prix:</strong> <?= $product['prix'] ?></p>
                     <p><strong>Genre:</strong> <?= $product['genre'] ?></p>
                     <p><strong>Nom:</strong> <?= $product['nom'] ?></p>
+                    <p><a href="actions/ajoutArticle.php?id=<?= $id ?>">Rajouter au panier</a></p>
                     </a>
                     <?php if ($user["admin"]) : ?>
                         <p><strong>Stock:</strong> <?= $product['stock'] ?></p>
