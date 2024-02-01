@@ -75,7 +75,6 @@ if (!empty($selectedGenre)) {
                 </div>
                 <?php $count++; ?>
                 <?php if ($count % 2 === 0) : ?>
-                    <!-- Ajouter une nouvelle ligne après chaque deux produits -->
                     <div style="clear: both;"></div>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -111,6 +110,10 @@ if (!empty($selectedGenre)) {
                 <button type="submit">Ajouter le Produit</button>
             </fieldset>
         </form>
+    </div>
+
+    <div class="center-button">
+        <a href="/commandePasse.php" class="btn btn-primary">Voir les commandes passées</a>
     </div>
 <?php endif ?>
 
