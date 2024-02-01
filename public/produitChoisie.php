@@ -20,52 +20,35 @@ if (!empty($_GET["id"])) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Détails du Produit</title>
 </head>
 <body>
-<?php foreach ($products as $product) : ?>
-        <?= $product["nom"] ?>
-    <?php endforeach; ?>
-    <div>
-    <table border="1" >
-    <tr>
-        <th>Stock</th>
-        <th>Prix</th>
-        <th>Genre</th>
-        <th>Nom</th>
-        <th>Description</th>
-        <th>Ajouter au Panier</th>
-
-    </tr>
     <?php foreach ($products as $product) : ?>
-        <tr>
-            <td><?= $product['stock'] ?></td>
-            <td><?= $product['prix'] ?></td>
-            <td><?= $product['genre'] ?></td>
-            <td><?= $product['nom'] ?></td>
-            <td><?= $product['commentaire'] ?></td>
-            <td><a href="action/ajoutArctivle.php?id=<?= $id ?>">Achter</a></td>
-
-        </tr>
+        <h2><?= $product["nom"] ?></h2>
+        <img src="<?= $product['image_url'] ?>" alt="<?= $product['nom'] ?>" width="300">
+        <p><strong>Stock:</strong> <?= $product['stock'] ?></p>
+        <p><strong>Prix:</strong> <?= $product['prix'] ?></p>
+        <p><strong>Genre:</strong> <?= $product['genre'] ?></p>
+        <p><strong>Description:</strong> <?= $product['commentaire'] ?></p>
     <?php endforeach; ?>
 
-    <p></p>
-    <?php
-        //si commande enregistrer >= 1 alors on affiche les commentaire et la notation,
-        // + ajout d un bouton ou d un lien vers un petit formulaire pour add un commentaire + notation ?>
-    <tr>
-        <th colspan="4">Commentaire</th>
-        <th>Notation</th>
-    </tr>
-    <?php foreach ($commentaires as $commentaire) : ?>
+    <h3>Commentaires</h3>
+    <table border="1">
         <tr>
-            <td colspan="4"><?= $commentaire["commentaire"]?></td>
-            <td><?= $commentaire["notations"]?></td>
+            <th colspan="4">Commentaire</th>
+            <th>Notation</th>
         </tr>
-    <?php endforeach; ?>
-    <a href="/product.php" class="btn btn-primary">Retour a la boutique</a>
+        <?php foreach ($commentaires as $commentaire) : ?>
+            <tr>
+                <td colspan="4"><?= $commentaire["commentaire"] ?></td>
+                <td><?= $commentaire["notations"] ?></td>
+            </tr>
+        <?php endforeach; ?>
     </table>
-    </div>
-   
+    <a href="/product.php" class="btn btn-primary">Retour à la boutique</a>
 </body>
+
+
+
+
 </html>
