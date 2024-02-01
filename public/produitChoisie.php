@@ -14,6 +14,13 @@ if (!empty($_GET["id"])) {
     ]);
     $commentaires = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+$stmt = $pdo->prepare('SELECT * FROM Commande WHERE id_user = ? AND status = "Envoyer" OR status = "Reçu"');
+$stmt->execute([
+    $user["id"]
+]);
+$commandeUser = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +40,11 @@ if (!empty($_GET["id"])) {
         <p><a href="actions/ajoutProduit.php?id=<?= $id ?>">Rajouter au panier</a></p>
     <?php endforeach; ?>
 
-    <h3>Commentaires</h3>
-    <a href="AjoutCommentaire.php?id=<?= $_GET['id'] ?>">Ajouter un commentaire</a>
+    <?php if (!empty($commandeUser)) :?>
+        <a href="AjoutCommentaire.php?id=<?= $_GET['id'] ?>">Ajouter un commentaire</a>
+    <?php endif; ?>
+
+
     <table border="1">
         <tr>
             <th colspan="4">Commentaire</th>
