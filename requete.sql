@@ -30,6 +30,7 @@ CREATE TABLE Commande (
     date_commande TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_update TIMESTAMP,
     status VARCHAR(255),
+    detail TEXT,
     FOREIGN KEY (id_user) REFERENCES User(id)
 )engine=InnoDB CHARSET=utf8mb4;
 
@@ -91,4 +92,3 @@ INSERT INTO commentaire (id_user, id_produit, commentaire, notations) VALUES
 (2, 2, "Sous vétement de merde", 0.0),
 (1, 2, "Franchement, pas mal", 6.0);
 
-AlTER TABLE Commande ADD status VARCHAR(255);
