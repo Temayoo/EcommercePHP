@@ -45,7 +45,6 @@ if (!empty($_GET["id"])) {
             </tr>
         <?php endforeach; ?>
     </table>
-
     <a href="/product.php" class="btn btn-primary">Retour à la boutique</a>
 </body>
 

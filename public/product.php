@@ -53,7 +53,7 @@ if (!empty($selectedGenre)) {
 
             <button type="submit">Rechercher</button>
         </form>
-        
+       
         <div class="product-container">
             <?php $count = 0; ?>
             <?php foreach ($products as $product) : ?>

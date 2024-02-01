@@ -27,11 +27,10 @@ CREATE TABLE Produit (
 CREATE TABLE Commande (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_user INT,
-    id_produit INT,
-    date_commande DATE,
-    description TEXT,
-    FOREIGN KEY (id_user) REFERENCES User(id),
-    FOREIGN KEY (id_produit) REFERENCES Produit(id)
+    date_commande TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_update TIMESTAMP,
+    status VARCHAR(255),
+    FOREIGN KEY (id_user) REFERENCES User(id)
 )engine=InnoDB CHARSET=utf8mb4;
 
 -- Création de la table Commentaire
@@ -91,3 +90,5 @@ INSERT INTO User (email, mdp, pseudo, admin) VALUES
 INSERT INTO commentaire (id_user, id_produit, commentaire, notations) VALUES
 (2, 2, "Sous vétement de merde", 0.0),
 (1, 2, "Franchement, pas mal", 6.0);
+
+AlTER TABLE Commande ADD status VARCHAR(255);
