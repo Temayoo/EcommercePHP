@@ -54,110 +54,197 @@ if (!empty($selectedGenre)) {
             <button type="submit">Rechercher</button>
         </form>
         
-
-        <table border="1">
-            <tr>
-                <th>Image</th>
-                <th>Prix</th>
-                <th>Genre</th>
-                <th>Nom</th>
-                <?php if ($user["admin"]) : ?>
-                    <th>Stock</th>
-                    <th>Supprimer</th>
-                    <th>Modifier</th>
-                <?php endif ?>
-            </tr>
+        <div class="product-container">
+            <?php $count = 0; ?>
             <?php foreach ($products as $product) : ?>
-                <?$id = $product["id"]?>
-                <tr>
-                    <td><img src="<?= $product['image_url'] ?>" alt="<?= $product['nom'] ?>" width="100"></td>
-                    <td><?= $product['prix'] ?></td>
-                    <td><?= $product['genre'] ?></td>
-                    <td><a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></td>
+                <?php $id = $product["id"] ?>
+                <div class="product">
+                    <img src="<?= $product['image_url'] ?>" alt="<?= $product['nom'] ?>" width="100">
+                    <p><strong>Prix:</strong> <?= $product['prix'] ?></p>
+                    <p><strong>Genre:</strong> <?= $product['genre'] ?></p>
+                    <p><strong>Nom:</strong> <a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></p>
                     <?php if ($user["admin"]) : ?>
-                        <td><?= $product['stock'] ?></td>
-                        <td><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Supprimer l'article</a></td>
-                        <td><a href="modifieArticle.php?id=<?= $id ?>">Modifier l'article</a></td>
+                        <p><strong>Stock:</strong> <?= $product['stock'] ?></p>
+                        <p><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Supprimer l'article</a></p>
+                        <p><a href="modifieArticle.php?id=<?= $id ?>">Modifier l'article</a></p>
                     <?php endif ?>
-                </tr>
+                </div>
+                <?php $count++; ?>
+                <?php if ($count % 2 === 0) : ?>
+                    <!-- Ajouter une nouvelle ligne après chaque deux produits -->
+                    <div style="clear: both;"></div>
+                <?php endif; ?>
             <?php endforeach; ?>
-        </table>
+        </div>
     </div>
-
+                <div class="center-button">
     <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
-
-
-
-
+                </div>
     <?php if ($user["admin"]) : ?>
-<form action="/actions/addProduct.php" method="post" class="add-product-form">
-    <fieldset>
-        <legend>Ajouter un Produit</legend>
+    <div class="centered-form">
+        <form action="/actions/addProduct.php" method="post" class="add-product-form">
+            <fieldset>
+                <legend>Ajouter un Produit</legend>
 
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required><br>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required><br>
 
-        <label for="genre">Genre :</label>
-        <input type="text" id="genre" name="genre" required><br>
+                <label for="genre">Genre :</label>
+                <input type="text" id="genre" name="genre" required><br>
 
-        <label for="prix">Prix :</label>
-        <input type="number" step="0.01" id="prix" name="prix" required><br>
+                <label for="prix">Prix :</label>
+                <input type="number" step="0.01" id="prix" name="prix" required><br>
 
-        <label for="stock">Stock :</label>
-        <input type="number" id="stock" name="stock" required><br>
+                <label for="stock">Stock :</label>
+                <input type="number" id="stock" name="stock" required><br>
 
-        <label for="commentaire">Commentaire :</label>
-        <textarea id="commentaire" name="commentaire"></textarea><br>
+                <label for="commentaire">Commentaire :</label>
+                <textarea id="commentaire" name="commentaire"></textarea><br>
 
-        <label for="image_url">URL de l'image :</label>
-        <input type="text" id="image_url" name="image_url" required><br>
+                <label for="image_url">URL de l'image :</label>
+                <input type="text" id="image_url" name="image_url" required><br>
 
-        <button type="submit">Ajouter le Produit</button>
-    </fieldset>
-</form>
+                <button type="submit">Ajouter le Produit</button>
+            </fieldset>
+        </form>
+    </div>
+<?php endif ?>
 
-    <?php endif ?>
 
     <?php require_once __DIR__ . '/../src/partials/show_error.php'; ?>
     <?php require_once __DIR__ . '/../src/partials/show_success.php'; ?>
-
     
 </body>
 
 <style>
-    .add-product-form {
-        max-width: 400px;
-        margin: 0 auto;
-    }
 
-    .add-product-form fieldset {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    .add-product-form label {
-        display: inline-block;
-        width: 100px;
-        margin-bottom: 5px;
-    }
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-    .add-product-form input,
-    .add-product-form textarea {
-        width: 100%;
-        padding: 5px;
-        margin-bottom: 10px;
-        box-sizing: border-box;
-    }
+.product {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: calc(48% - 20px); /* Ajuster la largeur pour avoir deux produits par ligne avec un espacement */
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    .add-product-form button {
-        padding: 10px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product p {
+    margin: 0;
+}
+
+.product a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.product a:hover {
+    text-decoration: underline;
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.centered-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.add-product-form fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.add-product-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.add-product-form input,
+.add-product-form textarea,
+.add-product-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.add-product-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+select {
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
 </style>
-
 
 </html>
