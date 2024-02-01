@@ -14,7 +14,8 @@ require_once __DIR__ . '/../src/init.php';
     <?php require_once __DIR__ . '/../src/partials/show_success.php'; ?>
 
 
-    <div><a href="/maCommande.php" class="btn btn-primary">Aller voir votre commande </a></div>
+    <div><a href="/maCommande.php" class="btn btn-primary">Passer la commande </a></div>
+
     
     <div><a href="/product.php" class="btn btn-primary">Retour a la boutique</a></div>
 </body>
