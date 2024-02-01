@@ -2,21 +2,21 @@
 require_once __DIR__ . '/../../src/init.php';
 
 if (isset($_GET["id"])) {
-    $stmt = $pdo->prepare('SELECT * FROM Commande WHERE id = ? AND status = ?');
+    $stmt = $pdo->prepare('SELECT * FROM Commande WHERE id_user = ? AND status = ?');
     $stmt->execute([
-        $_GET['id'],
+        $user['id'],
         "En Cours"
     ]);
 
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!empty($row)) {
-        foreach ($row as $commmande) {
-            $stmt = $pdo->prepare('INSERT INTO ProduitCommande (id_produit, id_commande, quantite) VALUES ( ?, ?, 1)');
-            $stmt->execute([
-                $user['id'],
-                $commande["id"]
+        $idCommande = $row["id"];
+        $stmt = $pdo->prepare('INSERT INTO ProduitCommande (id_produit, id_commande, quantite) VALUES ( ?, ?, 1)');
+        $stmt->execute([
+            $_GET['id'],
+            $idCommande
         ]);
-        }
+        
         $_SESSION['success_message'] = 'Ajouter au panier';
         header('Location: /../product.php'); // redirige utilisateur
         die(); // stop execution du script
@@ -32,7 +32,7 @@ if (isset($_GET["id"])) {
 
         $stmt = $pdo->prepare('INSERT INTO ProduitCommande (id_produit, id_commande, quantite) VALUES ( ?, ?, 1)');
         $stmt->execute([
-            $user['id'],
+            $_GET['id'],
             $idCommande
         ]);
 
@@ -41,8 +41,4 @@ if (isset($_GET["id"])) {
         die(); // stop execution du script
     }
 }
-
-
-
-
 ?>
