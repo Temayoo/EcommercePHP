@@ -34,6 +34,7 @@ if (!empty($_GET["id"])) {
     <?php endforeach; ?>
 
     <h3>Commentaires</h3>
+    <a href="AjoutCommentaire.php?id=<?= $_GET['id'] ?>">Ajouter un commentaire</a>
     <table border="1">
         <tr>
             <th colspan="4">Commentaire</th>
