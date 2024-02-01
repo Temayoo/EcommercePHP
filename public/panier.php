@@ -1,7 +1,7 @@
 <?php 
 require_once __DIR__ . '/../src/init.php';
 
-$stmt = $pdo->prepare('SELECT Produit.nom, Produit.prix, Produit.genre, Produit.image_url from produitCommande join Commande on produitCommande.id_commande = Commande.id join Produit on produitCommande.id_produit = Produit.id join User on commande.id_user = User.id where User.id = ?');
+$stmt = $pdo->prepare('SELECT Produit.id, Produit.nom, Produit.prix, Produit.genre, Produit.image_url from produitCommande join Commande on produitCommande.id_commande = Commande.id join Produit on produitCommande.id_produit = Produit.id join User on commande.id_user = User.id where User.id = ?');
     $stmt->execute([
         $user['id']
     ]);
@@ -25,6 +25,7 @@ $stmt = $pdo->prepare('SELECT Produit.nom, Produit.prix, Produit.genre, Produit.
         <p><?= $row['nom']?></p>
         <p><?= $row['genre']?></p>
         <p><?= $row['prix']?></p>
+        <p><a href="actions/retirerProduitPanier.php?id=<?= $row['id'] ?>" class="btn btn-primary">Enlever l'article du panier</a></p>
         </div>
     <?php endforeach;?>
     <div><a href="/maCommande.php" class="btn btn-primary">Passer la commande </a></div>
