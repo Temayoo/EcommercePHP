@@ -111,6 +111,9 @@ $panier = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Panier</title>
 </head>
 <body>
+    <?php require_once __DIR__ . '/../src/partials/menu.php'; ?>
+    <?php require_once __DIR__ . '/../src/partials/show_error.php'; ?>
+    <?php require_once __DIR__ . '/../src/partials/show_success.php'; ?>
     <div class="container">
         <form action="/panier.php" method="post">
             <?php foreach ($panier as $row): ?>
@@ -120,6 +123,7 @@ $panier = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <p><?= $row['nom'] ?></p>
                         <p><?= $row['genre'] ?></p>
                         <p><?= $row['prix'] ?></p>
+                        <p><a href="actions/retirerProduitPanier.php?id=<?= $row['id'] ?>" class="btn btn-primary">Enlever l'article du panier</a></p>
 
                         <?php if ($user['admin']): ?>
                             <p>Stock: <?= $row['stock'] ?></p>
@@ -140,7 +144,6 @@ $panier = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="/product.php" class="btn btn-primary">Retour à la boutique</a>
             </div>
         </form>
-    </div>
 </body>
 
 <style>
