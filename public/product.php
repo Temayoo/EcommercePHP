@@ -58,11 +58,14 @@ if (!empty($selectedGenre)) {
             <?php $count = 0; ?>
             <?php foreach ($products as $product) : ?>
                 <?php $id = $product["id"] ?>
+                <a href=""></a>
                 <div class="product">
+                <a href="produitChoisie.php?id=<?= $id ?>">
                     <img src="<?= $product['image_url'] ?>" alt="<?= $product['nom'] ?>" width="100">
                     <p><strong>Prix:</strong> <?= $product['prix'] ?></p>
                     <p><strong>Genre:</strong> <?= $product['genre'] ?></p>
-                    <p><strong>Nom:</strong> <a href="produitChoisie.php?id=<?= $id ?>"><?= $product['nom'] ?></a></p>
+                    <p><strong>Nom:</strong> <?= $product['nom'] ?></p>
+                    </a>
                     <?php if ($user["admin"]) : ?>
                         <p><strong>Stock:</strong> <?= $product['stock'] ?></p>
                         <p><a href="actions/supprimeeArticle.php?id=<?= $id ?>">Supprimer l'article</a></p>
@@ -244,6 +247,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
 
 </style>
 
