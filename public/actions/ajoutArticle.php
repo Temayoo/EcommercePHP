@@ -23,7 +23,7 @@ if (isset($_GET["id"])) {
         //Rajouter a la commande
     }else{
         //Création de la commande
-        $stmt = $pdo->prepare('INSERT INTO Commande (id_user, date_update, detail, status) VALUES (?, NOW(),"", ?) ');
+        $stmt = $pdo->prepare('INSERT INTO Commande (id_user, date_update, status) VALUES (?, NOW(), ?) ');
         $stmt->execute([
             $user['id'],
             'En Cours'
