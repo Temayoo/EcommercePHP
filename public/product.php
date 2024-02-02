@@ -33,7 +33,7 @@ if (!empty($selectedGenre)) {
 
 
     <?php require_once __DIR__ . '/../src/partials/menu.php';?>
-
+    <a href="/Mescommandes.php" class="btn btn-primary">vos commandes</a>
     <div class="container">
         <h1>Liste des Produits</h1>
 
@@ -121,135 +121,118 @@ if (!empty($selectedGenre)) {
 </body>
 
 <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333;
+    }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
 
-.product-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: #3498db;
+    }
 
-.product {
-    border: 1px solid #ccc;
-    padding: 15px;
-    width: calc(48% - 20px); /* Ajuster la largeur pour avoir deux produits par ligne avec un espacement */
-    box-sizing: border-box;
-    text-align: center;
-    margin-bottom: 20px;
-}
+    form {
+        margin-bottom: 20px;
+    }
 
-.product img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
 
-.product p {
-    margin: 0;
-}
+    input, select, button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+    }
 
-.product a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
+    select {
+        height: 40px; /* ajuster la hauteur du menu déroulant */
+    }
 
-.product a:hover {
-    text-decoration: underline;
-}
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-.center-button {
-    text-align: center;
-    margin-top: 20px;
-}
+    .product {
+        width: 48%; /* pour deux produits par ligne */
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        float: left;
+        box-sizing: border-box;
+    }
 
-.btn-primary {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
+    .product img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
 
-.centered-form {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-}
+    .center-button {
+        text-align: center;
+        margin-top: 20px;
+    }
 
-.add-product-form fieldset {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: left;
-}
+    .centered-form {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
 
-.add-product-form label {
-    display: block;
-    margin-bottom: 10px;
-}
+    .centered-form fieldset {
+        border: none;
+    }
 
-.add-product-form input,
-.add-product-form textarea,
-.add-product-form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-}
+    .centered-form legend {
+        font-size: 24px;
+        font-weight: bold;
+        color: #3498db;
+        margin-bottom: 20px;
+    }
 
-.add-product-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
+    .btn-primary {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
 
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
-select {
-    padding: 5px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
+    .btn-primary:hover {
+        background-color: #2980b9;
+    }
 
 </style>
-
-</html>
