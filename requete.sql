@@ -68,14 +68,13 @@ CREATE TABLE Localisation (
 )engine=InnoDB CHARSET=utf8mb4;
 
 
--- Insertion des produits
-INSERT INTO Produit (stock, prix, genre, nom, commentaire) VALUES
-(10, 1009.99, 'Électronique', 'Télephone', 'Un excellent Télephone avec de nombreuses fonctionnalités.'),
-(20, 49.99, 'Vêtements', 'Chemise ', 'Chemise pour occasions spéciales.'),
-(15, 99.99, 'Électroménager', 'Cafetière automatique', 'Préparez votre café préféré.'),
-(5, 199.99, 'Informatique', 'Ordinateur portable', 'Puissant et portable pour répondre à tous vos besoins.'),
-(30, 14.99, 'Livres', 'Roman captivant', 'Un passionnant roman.'),
-(30, 14.99, 'Livres', 'Pomme le livre ', 'Un passionnant roman.');
+-- Insertion des produits sur le thème des plantes
+INSERT INTO Produit (stock, prix, genre, nom, commentaire, image_url) VALUES
+(15, 29.99, "Plantes d'intérieur", "Fougère d'intérieur", "Une fougère élégante pour décorer votre espace intérieur.", "https://magazine.hortus-focus.fr/wp-content/uploads/sites/2/2021/11/nephrolepis-exaltata-benoitbruchez-1200x800-1.jpg"),
+(10, 19.99, "Plantes d'extérieur", "Rosier coloré", "Des roses éclatantes pour embellir votre jardin.", "https://media.ooreka.fr/public/image/Intro-plante-rose-fuchsia-ciel-nuage-bougainvilliers-jardin-printemps-soleil-full-12304060.jpg"),
+(25, 39.99, "Plantes médicinales", "Lavande apaisante", "La lavande pour ses propriétés apaisantes et son parfum relaxant.", "https://www.senteursduquercy.com/7102-thickbox/lavandula-angustifolia-spear-blue-vraie-lavande-bleu-violet.jpg"),
+(8, 49.99, "Cactus", "Cactus résistant", "Un cactus facile d'entretien pour ajouter une touche désertique à votre collection.", "https://www.foliflora.fr/static/photos/cactus-1.jpg"),
+(12, 24.99, "Herbes aromatiques", "Basilic frais", "Le basilic pour parfumer vos plats avec une saveur délicieuse.", "https://img-3.journaldesfemmes.fr/QLjwn9862lI6cTEm-cSD-cSM0MI=/1500x/smart/b08a3b2dea9e4b088b747c15ea27e8dd/ccmcms-jdf/24762816.jpg");
 
 
 -- Insertion de l'utilisateur "user" - useruser
@@ -87,8 +86,9 @@ INSERT INTO User (email, mdp, pseudo, admin) VALUES
 ('admin@gmail.com', 'd82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892', 'admin', TRUE);
 
 
--- Insertion des commentaire
+-- Insertion des commentaires sur les plantes
 INSERT INTO commentaire (id_user, id_produit, commentaire, notations) VALUES
-(2, 2, "Sous vétement de merde", 0.0),
-(1, 2, "Franchement, pas mal", 6.0);
+(2, 1, 'La fougère est magnifique, elle donne une ambiance apaisante à la maison.', 8.0),
+(1, 3, "La lavande a un parfum incroyable, je l'adore dans mon jardin.", 9.5),
+(2, 4, 'Le cactus est vraiment résistant, parfait pour les personnes sans main verte.', 7.5);
 
