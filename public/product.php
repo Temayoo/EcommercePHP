@@ -49,7 +49,9 @@ if (!empty($selectedGenre)) {
 
     <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
 
+    <?php if ($user["admin"]) : ?>
     <a href="/commandePasse.php" class="btn btn-primary">Voir les commandes passées</a>
+    <?php endif ?>
     
     </div>
 
