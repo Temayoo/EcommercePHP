@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitCommande'])) {
         $commandeId = $existingCommande['id'];
     } else {
         // Sinon, créez une nouvelle commande
-        $stmtInsertCommande = $pdo->prepare('INSERT INTO Commande (id_user,detail, status) VALUES (?,"Detail de la commandes", "En Cours")');
-        $stmtInsertCommande->execute([$userId]);
+        $stmtInsertCommande = $pdo->prepare('INSERT INTO Commande (id_user,detail, status) VALUES (?, ?, "En Cours")');
+        $stmtInsertCommande->execute([$userId, "Detail de la commandes"]);
 
         // Récupérez l'ID de la nouvelle commande
         $commandeId = $pdo->lastInsertId();
@@ -58,7 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitCommande'])) {
             $stmtUpdateStock->execute([$quantite, $produitId]);
         }
 
-        $stmt = $pdo->prepare('SELECT Produit.id, Produit.nom, Produit.prix, Produit.genre, Produit.image_url, Produit.stock FROM produitCommande JOIN Commande ON produitCommande.id_commande = Commande.id JOIN Produit ON produitCommande.id_produit = Produit.id JOIN User ON commande.id_user = User.id WHERE User.id = ?');
+        $stmt = $pdo->prepare('SELECT Produit.id, Produit.nom, Produit.prix, Produit.genre, Produit.image_url, Produit.stock
+        FROM produitCommande
+        JOIN Commande ON produitCommande.id_commande = Commande.id
+        JOIN Produit ON produitCommande.id_produit = Produit.id
+        JOIN User ON commande.id_user = User.id
+        WHERE User.id = ?');
         $stmt->execute([$user['id']]);
         $panier = $stmt->fetchAll(PDO::FETCH_ASSOC);
         //Recupération de tous les details des article du panier

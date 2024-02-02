@@ -34,36 +34,6 @@ if (!empty($selectedStatus)) {
 }
 
 $commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Initialiser une structure de données pour stocker les commandes regroupées par ID
-$groupedCommandes = [];
-
-foreach ($commandes as $commande) {
-    $commandeId = $commande['id'];
-
-    if (!isset($groupedCommandes[$commandeId])) {
-        // Créer une nouvelle entrée pour l'ID de commande s'il n'existe pas encore
-        $groupedCommandes[$commandeId] = [
-            'details' => [],
-            'total' => 0,
-            'pseudo' => $commande['pseudo'],
-            'date_commande' => $commande['date_commande'],
-            'date_update' => $commande['date_update'],
-            'status' => $commande['status'],
-        ];
-    }
-
-    // Ajouter les détails de la commande
-    $groupedCommandes[$commandeId]['details'][] = [
-        'quantite' => $commande['quantite'],
-        'produit_nom' => $commande['produit_nom'],
-        'prix_unitaire' => $commande['prix'],
-        'prix_total' => $commande['quantite'] * $commande['prix'],
-    ];
-
-    // Mettre à jour le total de la commande
-    $groupedCommandes[$commandeId]['total'] += $commande['quantite'] * $commande['prix'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +66,9 @@ foreach ($commandes as $commande) {
     <?php require_once __DIR__ . '/../src/partials/show_error.php'; ?>
     <?php require_once __DIR__ . '/../src/partials/show_success.php'; ?>
 
+    <div class="btn-container">
+        <a href="/product.php" class="btn btn-primary">Retour à la boutique</a>
+    </div>
     <div class="container">
         <h1>Liste des Commandes</h1>
 
@@ -119,24 +92,19 @@ foreach ($commandes as $commande) {
         </form>
         <!-- Fin du formulaire de filtrage -->
 
-        <?php foreach ($groupedCommandes as $commandeId => $groupedCommande) : ?>
+        <?php foreach ($commandes as $commande) : ?>
             <div class="commande">
-                <p><strong>ID Commande:</strong> <?= $commandeId ?></p>
-                <p><strong>Utilisateur:</strong> <?= $groupedCommande['pseudo'] ?></p>
-                <p><strong>Date de Commande:</strong> <?= $groupedCommande['date_commande'] ?></p>
-                <p><strong>Date de Mise à Jour:</strong> <?= $groupedCommande['date_update'] ?></p>
-                <p><strong>Status:</strong> <?= $groupedCommande['status'] ?></p>
-
-                <?php foreach ($groupedCommande['details'] as $detail) : ?>
-                    <p><strong>Détails:</strong> <?= $detail['quantite'] ?> <?= $detail['produit_nom'] ?> à <?= $detail['prix_unitaire'] ?>€ chacun</p>
-                    <p><strong>Prix Total:</strong> <?= $detail['prix_total'] ?>€</p>
-                <?php endforeach; ?>
-
-                <p><strong>Total de la Commande:</strong> <?= $groupedCommande['total'] ?>€</p>
-                
+                <p><strong>ID Commande:</strong> <?= $commande['id'] ?></p>
+                <p><strong>Utilisateur:</strong> <?= $commande['pseudo'] ?></p>
+                <p><strong>Date de Commande:</strong> <?= $commande['date_commande'] ?></p>
+                <p><strong>Date de Mise à Jour:</strong> <?= $commande['date_update'] ?></p>
+                <p><strong>Status:</strong> <?= $commande['status'] ?></p>
+                <?php if (isset($commande["detail"])) : ?>
+                    <p><strong>Detail:</strong> <?= $commande['detail'] ?></p>
+                <?php endif ?>
                 <?php if ($user["admin"]) : ?>
                     <form method="post" action="/actions/update_status.php">
-                        <input type="hidden" name="commandeId" value="<?= $commandeId ?>">
+                        <input type="hidden" name="commandeId" value="<?= $commande['id'] ?>">
                         <label for="nouveauStatut">Nouveau Statut:</label>
                         <select id="nouveauStatut" name="nouveauStatut">
                         <option value="En Cours">En Cours</option>
