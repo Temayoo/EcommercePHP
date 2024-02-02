@@ -136,6 +136,7 @@ $panier = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         <label for="quantite_<?= $row['id'] ?>">Quantité:</label>
                         <input type="number" name="quantite[<?= $row['id'] ?>]" value="1" min="1" max="1">
+                        <p><a href="actions/retirerProduitPanier.php?id=<?= $row['id'] ?>" class="btn btn-primary">Supprimer l'article du panier</a></p>
                     </div>
                 </div>
             <?php endforeach; ?>
