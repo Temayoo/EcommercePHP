@@ -50,56 +50,122 @@ require_once __DIR__ . '/actions/panier.php';
     </div>
 </body>
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-    }
+<style> 
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+.container {
+    max-width: 1000px; /* Increased container width for better readability */
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
 
-    .product {
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin-bottom: 20px;
-        background-color: #fff;
-        overflow: hidden;
-    }
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #3498db;
+}
 
-    .product img {
-        max-width: 100px;
-        float: left;
-        margin-right: 10px;
-    }
+form {
+    margin-bottom: 20px;
+}
 
-    .product-info {
-        float: left;
-    }
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
-    .product p {
-        margin: 0;
-    }
+input, select, button {
+    width: 100%;
+    padding: 12px; /* Increased padding for better input/button size */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
 
-    .btn-container {
-        margin-top: 10px;
-        clear: both;
-    }
+select {
+    height: 40px;
+}
 
-    .btn {
-        display: inline-block;
-        padding: 10px;
-        background-color: #3498db;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-right: 10px;
-    }
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    width: 48%;
+    margin-bottom: 20px;
+    padding: 20px; /* Increased padding for better spacing */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    float: left;
+    box-sizing: border-box;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.centered-form {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.centered-form fieldset {
+    border: none;
+}
+
+.centered-form legend {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 20px; /* Increased padding for better button size */
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
 </style>
 
 </html>
+   

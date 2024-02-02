@@ -39,8 +39,20 @@ if (!empty($selectedGenre)) {
 <body>
 
 
+
+
+    <div id="boutons">
+
     <?php require_once __DIR__ . '/../src/partials/menu.php';?>
+
     <a href="/Mescommandes.php" class="btn btn-primary">vos commandes</a>
+
+    <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
+
+    <a href="/commandePasse.php" class="btn btn-primary">Voir les commandes passées</a>
+    
+    </div>
+
     <div class="container">
         <h1>Liste des Produits</h1>
 
@@ -88,7 +100,6 @@ if (!empty($selectedGenre)) {
         </div>
     </div>
                 <div class="center-button">
-    <a href="/panier.php" class="btn btn-primary">Aller a votre Panier</a>
                 </div>
     <?php if ($user["admin"]) : ?>
     <div class="centered-form">
@@ -119,9 +130,7 @@ if (!empty($selectedGenre)) {
         </form>
     </div>
 
-    <div class="center-button">
-        <a href="/commandePasse.php" class="btn btn-primary">Voir les commandes passées</a>
-    </div>
+
 <?php endif ?>
 
 
@@ -131,118 +140,128 @@ if (!empty($selectedGenre)) {
 </body>
 
 <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        color: #333;
-    }
+   body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
 
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
 
-    h1 {
-        font-size: 36px;
-        margin-bottom: 20px;
-        color: #3498db;
-    }
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #3498db;
+}
 
-    form {
-        margin-bottom: 20px;
-    }
+form {
+    margin-bottom: 20px;
+}
 
-    label {
-        display: block;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
-    input, select, button {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 16px;
-    }
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
 
-    select {
-        height: 40px; /* ajuster la hauteur du menu déroulant */
-    }
+select {
+    height: 40px;
+}
 
-    .product-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-    .product {
-        width: 48%; /* pour deux produits par ligne */
-        margin-bottom: 20px;
-        padding: 15px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        float: left;
-        box-sizing: border-box;
-    }
+.product {
+    width: 48%;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    float: left;
+    box-sizing: border-box;
+}
 
-    .product img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
-    .center-button {
-        text-align: center;
-        margin-top: 20px;
-    }
+.center-button {
+    text-align: center;
+    margin-top: 20px;
+}
 
-    .centered-form {
-        max-width: 600px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
+.centered-form {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
 
-    .centered-form fieldset {
-        border: none;
-    }
+.centered-form fieldset {
+    border: none;
+}
 
-    .centered-form legend {
-        font-size: 24px;
-        font-weight: bold;
-        color: #3498db;
-        margin-bottom: 20px;
-    }
+.centered-form legend {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 20px;
+}
 
-    .btn-primary {
-        background-color: #3498db;
-        color: #fff;
-        padding: 10px 20px;
-        font-size: 16px;
-        text-decoration: none;
-        border-radius: 6px;
-        transition: background-color 0.3s ease;
-    }
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    display: block; /* Set to block to make buttons appear one below the other */
+    margin-bottom: 10px; /* Added margin for spacing between buttons */
+}
 
-    .btn-primary:hover {
-        background-color: #2980b9;
-    }
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+#boutons{
+    display: flex;
+    flex-direction: column;
+    padding-left: 2%;
+}
 
 </style>
+
+
