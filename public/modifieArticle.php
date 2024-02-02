@@ -1,5 +1,19 @@
 <?php
 require_once __DIR__ . '/../src/init.php';
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($user['id'])) {
+    // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+    header("Location: /login.php");
+    exit();
+}
+
+// Vérifier si l'utilisateur est un administrateur
+if (!$user['admin']) {
+    // Si l'utilisateur n'est pas un administrateur, redirigez-le vers une autre page (par exemple, la page d'accueil)
+    header("Location: /login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">

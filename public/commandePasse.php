@@ -1,6 +1,19 @@
 <?php
 require_once __DIR__ . '/../src/init.php';
 
+// Vérifier si l'utilisateur est connecté
+if (!isset($user['id'])) {
+    // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+    header("Location: /login.php");
+    exit();
+}
+
+// Vérifier si l'utilisateur est un administrateur
+if (!$user['admin']) {
+    header("Location: /index.php");
+    exit();
+}
+
 // Récupérer le statut sélectionné (filtrage)
 $selectedStatus = isset($_GET['status']) ? $_GET['status'] : '';
 

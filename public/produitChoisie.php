@@ -1,5 +1,14 @@
-<?
+<?php
 require_once __DIR__ . '/../src/init.php';
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($user['id'])) {
+    // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+    header("Location: /login.php");
+    exit();
+}
+
+
 
 if (!empty($_GET["id"])) {
     $stmt = $pdo->prepare('SELECT * FROM Produit WHERE id = ?');

@@ -1,6 +1,13 @@
 <?php
 require_once __DIR__ . '/../src/init.php';
 
+// Vérifier si l'utilisateur est connecté
+if (!isset($user['id'])) {
+    // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
+    header("Location: /login.php");
+    exit();
+}
+
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $selectedGenre = isset($_GET['genre']) ? $_GET['genre'] : '';
 
